@@ -145,23 +145,38 @@ class Hands:
         
         #TODO Convert Picture cards values to ints    
         #checkCard[n][0] == the cards value checkCard[n][1] == the cards color        
-        checkCard[0].append(int(Card0()[0]))
+        checkCard[0].append(Card0()[0])
         checkCard[0].append(Card0()[1])
-        checkCard[1].append(int(Card1()[0]))
+        checkCard[1].append(Card1()[0])
         checkCard[1].append(Card1()[1])
-        checkCard[2].append(int(Card2()[0]))
+        checkCard[2].append(Card2()[0])
         checkCard[2].append(Card2()[1])
-        checkCard[3].append(int(Card3()[0]))
+        checkCard[3].append(Card3()[0])
         checkCard[3].append(Card3()[1])
-        checkCard[4].append(int(Card4()[0]))
+        checkCard[4].append(Card4()[0])
         checkCard[4].append(Card4()[1])
-        checkCard[5].append(int(Card5()[0]))
+        checkCard[5].append(Card5()[0])
         checkCard[5].append(Card5()[1])
-        checkCard[6].append(int(Card6()[0]))
+        checkCard[6].append(Card6()[0])
         checkCard[6].append(Card6()[1])
-
-        #all the possible hands are created here and should not be ran individually insead run Check
         
+        #curently Card() for card values greater than 10 returns a letter this is change that to a int
+        i = 0
+        for card in checkCard:
+            if (card[0] == "A"):
+                checkCard[i][0] = 14
+            elif (card[0] == "K"):
+                checkCard[i][0] = 13
+            elif (card[0] == "Q"):
+                checkCard[i][0] = 12
+            elif (card[0] == "J"):
+                checkCard[i][0] = 11
+            elif (card[0] == "T"):
+                checkCard[i][0] = 10
+            
+            checkCard[i][0] = int(checkCard[i][0])            
+            i += 1
+            
         #find high card
         def highcard (checkCard):
             highcard = 0
@@ -404,6 +419,6 @@ game = Game(setOfPlayers, numberOfSeats, numberOfHands)
 # run the game
 #game.playHands()
 
-handscheck = Hands.Check(deckOfCards.H3, deckOfCards.H3, deckOfCards.H4, deckOfCards.H4, deckOfCards.H2, deckOfCards.H6, deckOfCards.H7)
+handscheck = Hands.Check(deckOfCards.H3, deckOfCards.H3, deckOfCards.H4, deckOfCards.H4, deckOfCards.HJ, deckOfCards.HK, deckOfCards.HQ)
 
 print (handscheck)
